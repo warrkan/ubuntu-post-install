@@ -36,6 +36,7 @@ function install_thirdparty {
 		'install_sublime_text'  'Sublime Text 3' \
 		'install_slack'  'Slack' \
 		'install_skype'  'Skype' \
+		'install_telegram'  'Telegram' \
 		3>&1 1>&2 2>&3)
 
 	# check exit status

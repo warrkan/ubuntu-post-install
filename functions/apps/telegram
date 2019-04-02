@@ -1,0 +1,31 @@
+#!/bin/bash
+
+function get_telegram_arch_postfix() {
+	case `uname -i` in
+		i386|i486|i586|i686)
+			echo "32"
+			;;
+		x86_64)
+			echo ""
+			;;
+		*)
+			whiptail --title "Error." --msgbox "Unable to define the architecture." 8 56
+            ${1}
+	esac	
+}
+
+# Telegram
+function install_telegram {	
+	# Variables
+	NAME="Telegram"
+	ARCH=$(get_telegram_arch_postfix install_thirdparty)
+	FILE_NAME="linux${ARCH}"
+	REMOTE="https://telegram.org/dl/desktop"
+
+	# Download and unpacking remote package
+	echo_message info "Downloading remote file '${FILE_NAME}' from '${REMOTE}'..."
+	curl -OL ${REMOTE}/${FILE_NAME}
+	superuser_do "tar xf ${FILE_NAME} -C /opt"
+
+	#rm ${FILE_NAME}
+}
