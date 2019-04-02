@@ -1,13 +1,14 @@
 #!/bin/bash
 
-# Dropbox
-function install_dropbox {
+# Skype
+function install_skype {
 	# Variables
-	NAME="Dropbox"
-	PACKAGE="dropbox"
+	NAME="Skype"
+	PACKAGE="skypeforlinux"
 	ARCH=$(get_arch_postfix install_thirdparty)
-	DEB_FILE_NAME="${PACKAGE}_2.10.0_${ARCH}.deb"
-	REMOTE="https://linux.dropbox.com/packages/ubuntu"
+	DEB_FILE_NAME="${PACKAGE}_8.42.76.54_${ARCH}.deb"
+	REMOTE="https://repo.skype.com/deb/pool/main/s/skypeforlinux"
+
 	# Download and install remote package
 	install_remote_package $NAME $PACKAGE $REMOTE $DEB_FILE_NAME install_thirdparty
 }

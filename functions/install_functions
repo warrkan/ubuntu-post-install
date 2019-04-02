@@ -38,47 +38,51 @@ function install_package() {
 	fi
 }
 
+# Returns arch postfix
+#
+function get_arch_postfix() {
+	case `uname -i` in
+		i386|i486|i586|i686)
+			echo "i386"
+			;;
+		x86_64)
+			echo "amd64"
+			;;
+		*)
+			whiptail --title "Error." --msgbox "Unable to define the architecture." 8 56
+            ${1}
+	esac	
+}	
+
 # Install single remote package function
 #
 # ${1} = Name
 # ${2} = package
 # ${3} = https://remote.example.com/
-# ${4} = return_function
+# ${4} = deb file name
+# ${5} = return_function
 
 function install_remote_package() {
 	echo_message header "Starting 'install_remote_package' function..."
 	# If package is not installed
 	if [ $(check_package_installed ${2}) != 0 ]; then
 		echo_message info "${1} is not installed."
-		# Download Debian file that matches system architecture
-		case `uname -i` in
-			i386|i486|i586|i686)
-				# Download 32 bit package
-				echo_message info "Downloading remote package '${2}_i386.deb' from '${3}'..."
-				curl -O ${3}/${2}_i386.deb
-				;;
-			x86_64)
-				# Download 64 bit package
-				echo_message info "Downloading remote package '${2}_amd64.deb' from '${3}'..."
-				curl -O ${3}/${2}_amd64.deb
-				;;
-			*)
-				whiptail --title "Error." --msgbox "No remote packages available to download." 8 56
-				${4}
-				;;
-		esac
+		# Download Debian file
+		echo_message info "Downloading remote package '${4}' from '${3}'..."
+		curl -O ${3}/${4}
+
 		# Install package(s)
-		echo_message info "Installing '${2}' package..."
-		superuser_do "dpkg -i ${2}*.deb"
+		echo_message info "Installing '${4}' package..."
+		superuser_do "dpkg -i ${4}"
 		# Install depencies, if any
 		echo_message info "Correcting any dependency errors..."
 		superuser_do "apt install -fy"
 		# Cleanup and finish
-		rm ${2}*.deb
+		rm ${4}
 		# Done
 		echo_message success "Installation of ${1} complete."
 		whiptail --title "Finished" --msgbox "Installation of ${1} complete." 8 56
-		${4}
+		${5}
 	else
 		# Already installed
 		echo_message info "${1} already installed."

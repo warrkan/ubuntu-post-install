@@ -1,13 +1,14 @@
 #!/bin/bash
 
-# Dropbox
-function install_dropbox {
+# Slack
+function install_slack {
 	# Variables
-	NAME="Dropbox"
-	PACKAGE="dropbox"
+	NAME="Slack"
+	PACKAGE="slack-desktop"
 	ARCH=$(get_arch_postfix install_thirdparty)
-	DEB_FILE_NAME="${PACKAGE}_2.10.0_${ARCH}.deb"
-	REMOTE="https://linux.dropbox.com/packages/ubuntu"
+	DEB_FILE_NAME="${PACKAGE}-3.3.8-${ARCH}.deb"
+	REMOTE="https://downloads.slack-edge.com/linux_releases"
+
 	# Download and install remote package
 	install_remote_package $NAME $PACKAGE $REMOTE $DEB_FILE_NAME install_thirdparty
 }

@@ -1,15 +1,5 @@
 #!/bin/bash
 
-# Install Chrome
-function download_chrome { 
-	# Variables
-	NAME="Google Chrome (${@^})"
-	PACKAGE=google-chrome-$@_current
-	REMOTE="https://dl.google.com/linux/direct"
-	# Download and install remote package
-	install_remote_package "$NAME" $PACKAGE $REMOTE install_thirdparty
-	status=1
-}
 
 # Google Chrome
 function install_chrome {
