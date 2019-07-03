@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# IntelliJ IDEA Community
+function install_idea_community {	
+	# Variables
+	NAME="IntelliJ IDEA"
+	FILE_NAME="ideaIC-2019.1.tar.gz"
+	REMOTE="https://download.jetbrains.com/idea"	
+
+	# Download and unpacking remote package
+	echo_message info "Downloading remote file '${FILE_NAME}' from '${REMOTE}'..."
+	curl -OL ${REMOTE}/${FILE_NAME}
+	superuser_do "tar xf ${FILE_NAME} -C /opt"
+
+	rm ${FILE_NAME}
+}

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Teamviewer
+function install_teamviewer {
+	# Variables
+	NAME="Teamviewer"
+	PACKAGE="teamviewer"
+	ARCH=$(get_arch_postfix install_thirdparty)
+	DEB_FILE_NAME="${PACKAGE}_${ARCH}.deb"
+	REMOTE="https://download.teamviewer.com/download/linux"
+
+	# Download and install remote package
+	install_remote_package $NAME $PACKAGE $REMOTE $DEB_FILE_NAME install_thirdparty
+}

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# AnyDesk
+function install_anydesk {
+	# Variables
+	NAME="AnyDesk"
+	PACKAGE="anydesk"
+	ARCH=$(get_arch_postfix install_thirdparty)
+	DEB_FILE_NAME="${PACKAGE}_4.0.1-1_${ARCH}.deb"
+	REMOTE="https://download.anydesk.com/linux"
+
+	# Download and install remote package
+	install_remote_package $NAME $PACKAGE $REMOTE $DEB_FILE_NAME install_thirdparty
+}

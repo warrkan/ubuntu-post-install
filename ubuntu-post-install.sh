@@ -44,10 +44,8 @@ function main {
 		'install_favs_utils'    'Install preferred utilities' \
 		'install_codecs'        'Install multimedia codecs' \
 		'install_fonts'         'Install additional fonts' \
-		'install_snap_apps'     'Install Snap applications' \
 		'install_thirdparty'    'Install third-party applications' \
 		'setup_dotfiles'        'Configure dotfiles' \
-		'system_configure'      'Configure system' \
 		'system_cleanup'        'Cleanup the system' \
 		3>&1 1>&2 2>&3)
 	# check exit status

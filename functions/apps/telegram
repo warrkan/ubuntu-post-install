@@ -27,5 +27,5 @@ function install_telegram {
 	curl -OL ${REMOTE}/${FILE_NAME}
 	superuser_do "tar xf ${FILE_NAME} -C /opt"
 
-	#rm ${FILE_NAME}
+	rm ${FILE_NAME}
 }

@@ -69,7 +69,7 @@ function install_remote_package() {
 		echo_message info "${1} is not installed."
 		# Download Debian file
 		echo_message info "Downloading remote package '${4}' from '${3}'..."
-		curl -O ${3}/${4}
+		curl -OL ${3}/${4}
 
 		# Install package(s)
 		echo_message info "Installing '${4}' package..."
